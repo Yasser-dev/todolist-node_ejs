@@ -1,0 +1,26 @@
+<%- include("header") -%>
+
+<div class="box" id="heading">
+  <h1><%=Day %></h1>
+</div>
+<div>
+  <img src="images/logo.png" id="logo" />
+  <h2>KENTECH</h2>
+</div>
+
+<div class="box">
+  <% for(let task in tasksList){ %>
+  <form action="/delete" method="POST">
+    <div class="item">
+      <input type="checkbox" onchange="this.form.submit()" name="checkbox" value="<%= tasksList[task]._id %>" />
+      <p><%= tasksList[task].name %></p>
+    </div>
+  </form>
+  <% }%>
+  <form action="/" method="post" class="item">
+    <input type="text" name="newItem" placeholder="Add Task" autocomplete="off" maxlength="28" required />
+    <button type="submit">+</button>
+  </form>
+</div>
+
+<%- include("footer") -%>
